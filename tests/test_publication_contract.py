@@ -57,7 +57,7 @@ class VerifyPapersTests(unittest.TestCase):
     def test_reject_path_traversal(self):
         with tempfile.TemporaryDirectory() as tmp:
             folder, data = build_fixture(Path(tmp))
-            data["files"][0]["path"] = "../article.pdf"
+            data["files"][0]["path"] = "some/../article.pdf"
             (folder / "manifest.json").write_text(json.dumps(data))
             with self.assertRaisesRegex(InvalidRelease, "unsafe asset path"):
                 verify_release(folder, require_signature=False)

@@ -113,9 +113,6 @@ def verify_release(
     require(is_plain_release_file(sums_path, release), "missing SHA256SUMS")
     require(sums_path.read_bytes() == expected_sums, "SHA256SUMS does not match manifest")
 
-    actual = {p.relative_to(release).as_posix() for p in release.rglob("*") if p.is_file() or p.is_symlink()}
-    require(actual == names | SKIP, f"unexpected/missing release files: {sorted(actual ^ (names | SKIP))}")
-
     signature = release / "manifest.json.minisig"
     if require_signature:
         require(is_plain_release_file(signature, release), "missing signature")
@@ -125,6 +122,13 @@ def verify_release(
                "-m", str(manifest_path), "-x", str(signature)]
         completed = subprocess.run(cmd, capture_output=True, text=True, check=False)
         require(completed.returncode == 0, f"Minisign signature invalid: {completed.stderr.strip()}")
+
+    expected_files = names | {"manifest.json", "SHA256SUMS"}
+    if signature.exists():
+        expected_files.add("manifest.json.minisig")
+    actual = {p.relative_to(release).as_posix() for p in release.rglob("*") if p.is_file() or p.is_symlink()}
+    require(actual == expected_files,
+            f"unexpected/missing release files: {sorted(actual ^ expected_files)}")
 
     return {"status": "ok", "paper_id": data["paper_id"], "version": data["version"],
             "files_verified": len(names), "signature_verified": require_signature}

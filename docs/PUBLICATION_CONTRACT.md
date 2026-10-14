@@ -68,6 +68,10 @@ In this archive the manifest signature covers hashes of every listed PDF/asset. 
 
 Each PDF should cite a fixed source commit or release, and the code repository should link back to the published paper version. The site hosted on HP may render a catalog and links, but must not be the only distribution source.
 
-## Licenses
+## Licenses and attribution
 
-Do not assume all papers share the source-code license. Before release, include applicable copyright and reuse terms in the PDF and declare licensing in this repository. Until then, no blanket permission is represented.
+Original published PDFs and accompanying non-software illustrations in this archive are licensed **Creative Commons Attribution 4.0 International (CC BY 4.0)**, see repository [LICENSE](../LICENSE) and [official legal code](https://creativecommons.org/licenses/by/4.0/legalcode). The PDF itself must identify the author(s), title, original publication URL and CC BY 4.0 notice. Reusers must provide appropriate attribution, refer to the license and indicate modifications.
+
+Repository verifier scripts, unit tests and CI configurations are licensed **Apache-2.0**, see [LICENSE-CODE](../LICENSE-CODE). Any separately identified third-party material retains its own rights and must have permission/attribution recorded before inclusion.
+
+Publication of the PDF and its source commit must not imply mathematical proof beyond what is documented in the article and checked by the independent verifier.

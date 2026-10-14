@@ -34,6 +34,10 @@ Until a first signed release exists, no papers are published here. See [Publicat
 
 - [Implicit Sliding Puzzles](https://github.com/quendoris/implicit-sliding-puzzles)
 
-## Status and licensing
+## Licenses
 
-Initialized on 14 October 2026. Licenses for individual articles and supporting materials will be explicitly declared before release; a public repository is not by itself a license grant.
+- **Published papers, figures and publication prose:** Creative Commons Attribution 4.0 International ([LICENSE](LICENSE); [legal code](https://creativecommons.org/licenses/by/4.0/legalcode)).
+- **Verifier, tests, CI and other software:** Apache License 2.0 ([LICENSE-CODE](LICENSE-CODE)).
+- Individual publications identify the author(s), the license and the original publication URL within the PDF; third-party material remains under its respective terms.
+
+Initialized on 14 October 2026. The archive contains no signed publications yet; adding license files does not itself issue a publication.
